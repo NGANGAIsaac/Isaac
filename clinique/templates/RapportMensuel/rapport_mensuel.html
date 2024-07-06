@@ -1,0 +1,25 @@
+{% extends 'infop.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>Rapport Mensuel</title>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Rapport Mensuel pour {{ mois }}</h1><br>
+    <table class="table table-striped table-hover" style="width: 1439px; text-align: center;">
+        <tr>
+            <th>Nombre de patients examinés</th>
+            <th>Nombre de patients consultés</th>
+            <th>Nombre de patients hospitalisés</th>
+        </tr>
+
+        <tr>
+            <td>{{ examens }}</td>
+            <td>{{ consultations }}</td>
+            <td>{{ hospitalisations }}</td>
+        </tr>
+        </table>
+
+</body>
+{% endblock %}

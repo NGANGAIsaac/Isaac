@@ -1,0 +1,58 @@
+{% extends 'infoc.html' %}
+
+{% block content %}
+
+<style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    
+
+  </style>
+
+<form action="" method="post">
+    <div class="container register-form">
+        <div class="form">
+          <div class="note">
+            <p>Veuillez créer votre compte</p>
+          </div>
+          <div class="form-content">
+            <div class="row">
+              <div class="col-md-6">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" placeholder="Entrez le nom" name="username"><br><br>
+                    <input type="mail" class="form-control" placeholder="Entrez l'email" name="email"><br><br>
+                    <input type="password" class="form-control" placeholder="Entrez le mot de passe" name="password"><br><br>
+                    <input type="password" class="form-control" placeholder="Confirmez le mot de passe" name="password1"><br><br>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <button class="btn btn-info"><a href="{%url 'urllogin' %}">J'ai déjà un compte</a></button>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+</form>
+
+
+
+{% endblock %}

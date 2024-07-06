@@ -1,0 +1,96 @@
+{% extends 'infop.html' %}
+
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+      <br><br><br>
+
+<h2 style="text-align: center;">Veuillez d'abord consulter le patient</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-content">
+            <div class="row">
+              <div class="col-md-6">
+
+                        <label for="patient">Patient:</label>
+                        <select name="patient" class="form-control" id="patient">
+                            {% for i in patients %}
+                                <option value="{{ i.id }}">{{ i.prenom }} {{ i.nom }}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+
+                        <label for="docteur">Docteur:</label>
+                        <select name="docteur" class="form-control" id="docteur">
+                            {% for i in docteur %}
+                                <option value="{{ i.id }}">{{ i.prenom }} {{ i.nom }}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+
+                        <label for="raison_consultation">Raison de consultation:</label>
+                        <textarea name="raison_consultation" class="form-control"></textarea>
+                        <br>
+
+                        <label for="antecedents_medicaux">Antécédents médicaux:</label>
+                        <textarea name="antecedents_medicaux" class="form-control"></textarea>
+                        <br>
+
+                        <label for="diagnostic">Diagnostic:</label>
+                        <textarea name="diagnostic" class="form-control"></textarea>
+                        <br>
+
+                        <label for="prescriptions">Prescriptions:</label>
+                        <textarea name="prescriptions" class="form-control"></textarea>
+                        <br>
+
+                        <label for="recommandations">Recommandations:</label>
+                        <textarea name="recommandations" class="form-control"></textarea>
+                        <br>
+
+                        <label for="notes">Notes:</label>
+                        <textarea name="notes" class="form-control"></textarea>
+                        <br>
+
+                        <button type="submit" class="btnSubmit">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'infop.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>Rapport des Ventes</title>
+</head>
+<body>
+    <br>
+
+    <h1 style="text-align: center;">Rapport des Ventes</h1><br>
+    <table class="table table-striped table-hover" style="width: 1439px; text-align: center;">
+        <tr>
+            <th>Montant total gagné</th>
+            <th>Bénéfice total réalisé</th>
+        </tr>
+
+        <tr>
+            <td>{{ montant_total }} FCFA</td>
+            <td>{{ benefice_total }} FCFA</td>
+        </tr>
+        </table>
+<br><br>
+
+    <h2 style="text-align: center;">Détails des ventes</h2>
+
+    <table class="table table-striped table-hover" style="width: 1439px; text-align: center;">
+        <tr>
+            <th>Clients</th>
+            <th>Produit acheté</th>
+            <th>Quantité</th>
+            <th>Montant</th>
+            <th>Bénéfice</th>
+        </tr>
+
+        {% for vente in ventes %}
+        <tr>
+            
+            <td>{{ vente.client.nom }}</td>
+            <td>{{ vente.produit.nom }}</td>
+            <td>{{ vente.quantite }}</td>
+            <td>{{ vente.montant }} FCFA</td>
+            <td>{{ vente.benefice }} FCFA</td>
+           
+        </tr>
+        {% endfor %}
+        </table>
+</body>
+{% endblock %}

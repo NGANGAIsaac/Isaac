@@ -1,0 +1,92 @@
+{% extends 'infop.html' %}
+
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 40%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+      <br><br><br>
+
+
+<h2 style="text-align: center;">Hospitaliser le patient</h2>
+
+<div class="container" style="background-color: skyblue;">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+          <p class="{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-content">
+            <div class="row">
+              <div class="col-md-6">
+                    
+                    <label for="patient_id">Patient consulté:</label>
+                    <select name="patient_id" class="form-control">
+                        {% for consultation in patientconsulé %}
+                            <option value="{{ consultation.patient.id }}">{{ consultation.patient.prenom }} {{ consultation.patient.nom }} </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    
+                    <label for="date_admission">Date d'admission:</label>
+                    <input type="date" name="date_admission" class="form-control">
+                    <br>
+
+                    <label for="motif_admission">Motif d'admission:</label>
+                    <textarea name="motif_admission" class="form-control"></textarea>
+                    <br>
+                    
+                    <label for="salle">Salle:</label>
+                    <select name="salle" class="form-control">
+                      {% for salle in salles %}
+                        <option value="{{ salle.id }}">{{ salle.nom }}</option>
+                      {% endfor %}
+                  </select><br>
+                                  
+                    <button type="submit" class="btnSubmit">Enregistrer l'hospitalisation</button>
+                </div>
+            </div>
+        </div>    
+    </form> 
+
+{% endblock %}

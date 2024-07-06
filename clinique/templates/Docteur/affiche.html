@@ -1,0 +1,28 @@
+{% extends 'infop.html' %}
+
+{% block content %}
+<br><br>
+<center><h2>Liste des docteurs</h2></center>
+
+<table class="table table-striped table-hover">
+<tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>Spécialité</th>
+    <th>Téléphone</th>
+    <th>Email</th>
+</tr>
+
+<tr>
+    {% csrf_token %}
+    {% for i in d %}
+    <td>{{i.prenom}}</td>
+    <td>{{i.nom}}</td>
+    <td>{{i.specialite}}</td>
+    <td>{{i.telephone}}</td>
+    <td>{{i.email}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock%}

@@ -1,0 +1,97 @@
+{% extends 'infop.html' %}
+
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+      <br><br><br>
+
+    <h2 style="text-align: center;">Examiner le patient</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+
+                <label for="patient_id">Patient:</label>
+                <select name="patient_id" class="form-control">
+                    {% for i in patients %}
+                        <option value="{{ i.id }}"> {{ i.prenom }} {{ i.nom }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+
+                <label for="docteur_id">Docteur:</label>
+                <select name="docteur_id" class="form-control">
+                    {% for i in docteur %}
+                        <option value="{{ i.id }}"> {{ i.prenom }} {{ i.nom }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+                <label for="type_examen">Type d'examen:</label>
+                <input class="form-control" type="text" aria-label="readonly input example" name="type_examen"><br>
+                
+
+                <label for="resultats">Résultats:</label>
+                <textarea name="resultats" class="form-control"></textarea>
+                <br>
+
+                <label for="observations">Observations:</label>
+                <textarea name="observations" class="form-control"></textarea>
+                <br>
+
+                <label for="suivi_necessaire">Suivi nécessaire:</label>
+                <textarea name="suivi_necessaire" class="form-control"></textarea>
+                <br>
+
+                <label for="statut">Statut:</label>
+                <input type="text" name="statut" class="form-control">
+                <br>
+
+                <label for="notes">Notes:</label>
+                <textarea name="notes" class="form-control"></textarea>
+                <br>
+                <button type="submit" class="btnSubmit">Enregistrer</button>
+              </div>
+          </div>
+        </div>
+        
+    </form>
+
+{% endblock %}

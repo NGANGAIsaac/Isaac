@@ -1,0 +1,33 @@
+{% extends 'infoc.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+
+    <div class="container register-form">
+        <div class="form">
+          <div class="note">
+            <p>Veuillez confirmer</p>
+          </div>
+          <br>
+    
+            {% csrf_token %}
+
+            <div class="form-content">
+                <div class="row">
+                <div class="col-md-6">
+            
+                        <input type="password" class="form-control" placeholder="Entrez le mot de passe" name="password"><br><br>
+                        <input type="password" class="form-control" placeholder="Confirmez le mot de passe" name="password1"><br><br>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Vérifier</button>
+    <button class="btn btn-info"><a href="{%url 'urllogin' %}">Se connecter</a></button>
+</form> 
+
+
+
+{% endblock %}
